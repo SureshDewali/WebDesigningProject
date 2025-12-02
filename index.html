@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Peec Multi‑Theme Responsive Calculator</title>
+<title>Multi-Theme Responsive Calculator</title>
 <style>
 /* ------------------------------
    GLOBAL VARIABLES
@@ -26,7 +26,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  background:url('Phot.jpg') center/cover no-repeat fixed;
+  background:url('photo.jpg') center/cover no-repeat fixed;
 }
 
 /* Wrapper */
@@ -104,9 +104,7 @@ button:active{ transform:scale(0.92); }
 .eq{ background:var(--accent); color:#fff; grid-row: span 2; height:100%; }
 .zero{ grid-column:span 2; }
 
-/* ------------------------------
-   THEMES 1–5
------------------------------- */
+/* Themes */
 /* 1 NEON GLOW */
 .theme-neon button{ box-shadow:0 0 12px #0ff, inset 0 0 12px #0ff; }
 .theme-neon .container{ border:2px solid #0ff; }
@@ -121,7 +119,10 @@ button:active{ transform:scale(0.92); }
 
 /* 4 GAMING RGB */
 @keyframes rgb{
-  0%{box-shadow:0 0 10px red;} 33%{box-shadow:0 0 10px lime;} 66%{box-shadow:0 0 10px cyan;} 100%{box-shadow:0 0 10px red;}
+  0%{box-shadow:0 0 10px red;} 
+  33%{box-shadow:0 0 10px lime;} 
+  66%{box-shadow:0 0 10px cyan;} 
+  100%{box-shadow:0 0 10px red;}
 }
 .theme-rgb .container{ animation:rgb 3s infinite linear; }
 
@@ -130,7 +131,7 @@ button:active{ transform:scale(0.92); }
 .theme-gold button{ background:#333; color:gold; }
 .theme-gold .eq{ background:gold; color:black; }
 
-/* RESPONSIVE FIXES */
+/* Responsive */
 @media(max-height:650px){
   .container{ transform:scale(0.88); }
   .top-photo img{ width:90px; height:90px; }
@@ -143,8 +144,8 @@ button:active{ transform:scale(0.92); }
 <body class="theme-neon">
 
 <div class="container">
-  <div class="top-photo"><img src="Phot.jpg"></div>
-  <div class="title">Phuntsho Choden (Peec)</div>
+  <div class="top-photo"><img src="photo.jpg"></div>
+  <div class="title">SANGITA</div>
 
   <div class="display">
     <div id="history">&nbsp;</div>
@@ -186,9 +187,15 @@ let buttons = document.querySelectorAll("button");
 let current = "0";
 let previous = "";
 
-function update(){ outputEl.textContent = current; historyEl.textContent = previous || " "; }
+function update(){ 
+  outputEl.textContent = current; 
+  historyEl.textContent = previous || " "; 
+}
 
-function calc(expr){ try{ return Function(`return ${expr}`)(); }catch{ return "Error"; } }
+function calc(expr){ 
+  try{ return Function(`return ${expr}`)(); }
+  catch{ return "Error"; } 
+}
 
 buttons.forEach(btn=>{
   btn.onclick = ()=>{
@@ -196,12 +203,14 @@ buttons.forEach(btn=>{
 
     if(val === "C"){ current="0"; previous=""; return update(); }
     if(val === "DEL"){ current = current.length>1 ? current.slice(0,-1) : "0"; return update(); }
+
     if(val === "="){
       let exp = previous + current;
 
       if(exp === "7+7+7"){
-        current = "Hello Peec , This is for you";
-        previous = ""; return update();
+        current = "happy birthday Nangu";
+        previous = ""; 
+        return update();
       }
 
       current = calc(exp).toString();
