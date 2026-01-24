@@ -411,6 +411,25 @@ export const Sanskars = () => {
       <div className="container mx-auto px-6">
         <SectionTitle title="16 Sanskars" subtitle="The sacramental rites of passage in Hinduism" light={true} />
         
+        {/* Mobile Quick Nav */}
+        <div className="lg:hidden mb-8 sticky top-20 z-30 bg-stone-900/95 backdrop-blur-md border-b border-white/10 -mx-6 px-6 py-4 transition-all">
+          <div className="flex overflow-x-auto gap-3 pb-2 no-scrollbar">
+            {allSanskarsList.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToId(item.id)}
+                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all border ${
+                  activeId === item.id 
+                    ? 'bg-yoga-gold text-stone-900 border-yoga-gold' 
+                    : 'bg-white/5 text-stone-400 border-white/10 hover:border-yoga-gold/50 hover:text-yoga-gold'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Sidebar Navigation */}
           <div className="lg:w-1/4 hidden lg:block">
@@ -440,7 +459,7 @@ export const Sanskars = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="scroll-mt-32"
+                className="scroll-mt-40" // Increased scroll margin to account for sticky header on mobile
                 onViewportEnter={() => setActiveId(sanskar.id)}
               >
                 <div className="flex items-end gap-4 mb-6 border-b border-white/10 pb-4">

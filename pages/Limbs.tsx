@@ -4,7 +4,7 @@ import {
   Heart, Shield, Scale, Zap, Leaf, 
   Droplets, Smile, Flame, BookOpen, Sunrise, 
   Activity, Wind, EyeOff, Target, Brain, Sun,
-  CheckCircle2, Dot
+  CheckCircle2, Dot, Sparkles
 } from 'lucide-react';
 
 const fadeInUp = {
@@ -33,8 +33,15 @@ const LimbBadge: React.FC<LimbBadgeProps> = ({ number, colorClass }) => (
 
 export const Limbs = () => {
   return (
-    <div className="pt-28 pb-20 bg-stone-50 overflow-hidden">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen pt-28 pb-20 relative overflow-hidden bg-[#F0F5F0]">
+      
+      {/* --- PREMIUM BACKGROUND --- */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+         <div className="absolute inset-0 bg-gradient-to-br from-[#f1f8e9] via-[#f7fcf9] to-[#e8f5e9]" />
+         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 30 C 10 50 50 50 30 30 Z\' fill=\'%232C3E33\'/%3E%3C/svg%3E")' }} />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         
         {/* --- SECTION HEADER --- */}
         <div className="text-center mb-24 max-w-4xl mx-auto">
